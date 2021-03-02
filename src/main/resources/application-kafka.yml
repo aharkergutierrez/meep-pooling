@@ -1,0 +1,12 @@
+spring:
+  kafka:
+    consumer:
+      group-id: meepIdConsumer
+      auto-offset-reset: earliest
+    # change this property if you are using your own
+    # Kafka cluster or your Docker IP is different
+      bootstrap-servers: 192.168.1.39:9092
+    producer:
+      bootstrap-servers: 192.168.1.39:9092
+    bootstrap-servers: 192.168.1.39:9092
+      

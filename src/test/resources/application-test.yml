@@ -1,0 +1,50 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /meep
+meep:
+  cron:
+    expression: 0,8,16,24,32,40,48,56 * * ? * *
+  pooling:
+    configuration:
+      endPointUrl: https://apidev.meep.me/tripplan/api/v1/routers/{$.country}/resources?lowerLeftLatLon={$.lowerLeft.latitude},{$.lowerLeft.longitude}&upperRightLatLon={$.upperRight.latitude},{$.upperRight.longitude}&companyZoneIds={$.companyZoneIds[*]}
+      configurationZones:
+        - 
+          lowerLeft:
+            latitude: 38.711046
+            longitude: -9.160096
+          upperRight:
+            latitude: 38.739429
+            longitude: -9.137115
+          companyZoneIds: 545,467,473
+          country: lisboa
+          
+spring:
+  h2:
+    console:
+      enabled: false
+  datasource:
+    url: jdbc:h2:file:D:/meep/db/dbmeeptest
+    driverClassName: org.h2.Driver
+    username: meep
+    password: meep
+
+  jpa:
+    show-sql: true
+    
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+      springframework:
+        jdbc:
+          core:
+            JdbcTemplate: DEBUG
+            StatementCreatorUtils: TRACE
+
+          
